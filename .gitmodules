@@ -1,0 +1,6 @@
+[submodule "AWS"]
+	path = AWS
+	url = https://github.com/imsushant12/AWS-Notes.git
+[submodule "Azure"]
+	path = Azure
+	url = https://github.com/imsushant12/Microsoft-Azure-Notes.git

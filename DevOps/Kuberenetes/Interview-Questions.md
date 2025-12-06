@@ -1,0 +1,12 @@
+
+### What are the challenges of using standalone containers?
+Using standalone containers can become difficult as your application grows. You have to manually start, stop, and scale containers, which is time-consuming. If a container crashes, it won’t restart automatically unless you add extra configurations. There’s no easy way for containers to talk to each other or discover services on their own. Managing resources like CPU and memory across machines is also hard. Plus, there’s no built-in way to monitor or log what’s happening inside containers. Rolling back updates or auto-recovering from failures is not simple either.
+
+### How does Kubernetes solve those challenges?
+Kubernetes makes container management much easier and more powerful. It can automatically deploy, scale, and restart containers when needed. If a container fails, Kubernetes can restart it or move it to a healthy server. It provides service discovery and load balancing, so containers can talk to each other easily. You can set limits for CPU and memory, and it manages them across multiple machines. Kubernetes also supports rolling updates, rollbacks, and integrates with tools for monitoring and logging. Overall, it brings automation, resilience, and better control over containerized applications.
+
+### When should you use Kubernetes?
+You should use Kubernetes when you're working with microservices that need to scale and communicate with each other. It’s a great choice for apps that require auto-scaling, load balancing, and high availability. If you're using CI/CD pipelines for frequent deployments, Kubernetes supports smooth integrations. It's also helpful when you want to run the same app in different environments like AWS, Azure, or on-premises. And if your app needs to recover automatically from failures, Kubernetes handles that well too.
+
+### When should you avoid using Kubernetes?
+Avoid Kubernetes if your app is small or simple—it might be overkill. If your team doesn’t have experience with containers or DevOps, Kubernetes can be complex and hard to manage. It’s also not ideal for quick projects or MVPs where time and resources are limited. Running Kubernetes requires more infrastructure, which can be expensive, so it’s not the best choice for low-budget setups. Lastly, if your app is a tightly coupled monolith that doesn’t need scaling or service discovery, Kubernetes might not offer much benefit.
