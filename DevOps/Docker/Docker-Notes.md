@@ -432,8 +432,6 @@ services:
     image: redis
 ```
 
-
-
 ## Extra
 
 ### Difference between `docker attach` and `docker exec`
