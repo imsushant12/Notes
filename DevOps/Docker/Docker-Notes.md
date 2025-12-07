@@ -423,13 +423,71 @@ restart: always
 version: "3.8"
 
 services:
+  # -------------------------------
+  # NGINX Web Server
+  # -------------------------------
   web:
-    image: nginx
+    container_name: nginx-server         # Correct key is container_name
+    image: nginx                         # Using official NGINX image
     ports:
-      - "8080:80"
+      - "8080:80"                        # Host:Container port mapping
+    networks:
+      - application-network              # Connects nginx to app network
+    restart: always                      # Auto-restart for stability
 
+  # -------------------------------
+  # Redis Cache
+  # -------------------------------
   redis:
-    image: redis
+    container_name: redis
+    image: redis                          # Official Redis image
+    networks:
+      - application-network               # Flask can reach Redis
+    restart: always
+
+  # -------------------------------
+  # MySQL Database
+  # -------------------------------
+  mysql:
+    container_name: mysql-db
+    image: mysql
+    environment:                          
+      MYSQL_DATABASE: "devops"
+      MYSQL_ROOT_PASSWORD: "root"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql         
+    networks:
+      - application-network
+    restart: always
+
+  # -------------------------------
+  # Flask Backend
+  # -------------------------------
+  flask:
+    build:
+      context: .                          # Build local Dockerfile
+    container_name: flask-backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql                             # Flask waits for MySQL
+    networks:
+      - application-network
+    restart: always
+
+# -------------------------------
+# Persistent Volume for MySQL
+# -------------------------------
+volumes:
+  mysql-data:
+
+# -------------------------------
+# Application Network
+# -------------------------------
+networks:
+  application-network:
 ```
 
 ## Extra
