@@ -490,18 +490,6 @@ networks:
   application-network:
 ```
 
-## Extra
-
-### Difference between `docker attach` and `docker exec`
-
-The `exec` command creates a new process in the container's environment but `attach` command connects the standard I/O of the main process inside the container to the corresponding standard I/Oof the current terminal.
-
-### Difference between `expose` and `publish`
-
-- If we do not specify the `expose` or `-p`, then the services in the container can only be accessible from inside container.
-- If we `expose` a port then the services in the container can be accessed by docker containers but it cannot be accessed by outside world.
-- If we `publish` a port then the container services automatically gets exposed and it is accessible by everyone.
-
 ## Commands
 
 ### Basic Commands
@@ -886,3 +874,15 @@ docker compose build
 ```bash
 docker compose ps
 ```
+
+## Extra
+
+### Difference between `docker attach` and `docker exec`
+
+The `exec` command creates a new process in the container's environment but `attach` command connects the standard I/O of the main process inside the container to the corresponding standard I/Oof the current terminal.
+
+### Difference between `expose` and `publish`
+
+- If we do not specify the `expose` or `-p`, then the services in the container can only be accessible from inside container.
+- If we `expose` a port then the services in the container can be accessed by docker containers but it cannot be accessed by outside world.
+- If we `publish` a port then the container services automatically gets exposed and it is accessible by everyone.
