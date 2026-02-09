@@ -419,3 +419,8 @@ Most real projects use:
 - Custom secrets: AWS, DockerHub, Slack
 - `gh`: comments, labels, releases, bots
 
+## Environments in workflow
+
+- Staging
+- Dev
+- 
